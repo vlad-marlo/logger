@@ -1,6 +1,9 @@
 package hook
 
-import "github.com/sirupsen/logrus"
+import (
+	"github.com/sirupsen/logrus"
+	"io"
+)
 
 func WithFileOutput(dir, entry, name string) OptsFunc {
 	return func(h *hookWriter) {
@@ -22,5 +25,11 @@ func WithLevels(levels []string) OptsFunc {
 			}
 		}
 		h.lvl = lvl
+	}
+}
+
+func WithOutput(out io.Writer) OptsFunc {
+	return func(h *hookWriter) {
+		h.out = append(h.out, out)
 	}
 }
