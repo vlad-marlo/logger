@@ -10,8 +10,9 @@ func Example() {
 	// initializing logger
 	// same is
 	/*
-		logger := log.AddOpts(
-			logrus.New(),
+		logger := logrus.New()
+		log.AddOpts(
+			logger,
 			log.WithLevel(logrus.DebugLevel),
 			log.WithOutput(os.Stdout),
 			// add opts whatever you want
